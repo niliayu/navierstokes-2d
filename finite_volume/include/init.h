@@ -44,12 +44,6 @@ public:
 			else //inside the grid
 				coeff[x][y] = 0.25;
 
-			// DEBUG
-			std::cout << "X";
-			std::cout << x << std::endl;
-			std::cout << "Y";
-			std::cout << y << std::endl;
-			std::cout << coeff[x][y] << std::endl;	
 		}
 	}
 	}
@@ -59,13 +53,13 @@ public:
 	double time = 0.0;
 
 	// fixed time stepping
-	int dt = 0.01;
+	double dt = 0.01;
 	int tfinal = 100;
 
 	int psolvit = 100; //pressure solver max iterations
-	int mu = 0.001; // kinematic viscosity
-	int beta = 1.2; // SOR extrapolation factor
-	int h = 1/gridx; // grid height
+	double mu = 0.001; // kinematic viscosity
+	double beta = 1.2; // SOR extrapolation factor
+	double h = 1/gridx; // grid height
 
 };
 
