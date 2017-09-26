@@ -59,7 +59,7 @@ public:
 	int psolvit = 100; //pressure solver max iterations
 	double mu = 0.001; // kinematic viscosity
 	double beta = 1.2; // SOR extrapolation factor
-	double h = 1/gridx; // grid height
+	double h = 1.0/gridx; // grid height
 
 };
 
