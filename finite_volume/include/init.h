@@ -11,8 +11,8 @@ public:
 	/* MESH INITIALIZATION */
 	
 	// grid size dimensions
-	static const int gridx = 16;
-	static const int gridy = 16;	
+	static constexpr int gridx = 16;
+	static constexpr int gridy = 16;	
 
 
 	// x direction velocity matrix
@@ -24,10 +24,10 @@ public:
 	// pressure matrix
 	std::array<std::array<double,gridy+1>,gridx+1> p = { };
 
-	// x doubleermediate velocity matrix
+	// x intermediate velocity matrix
 	std::array<std::array<double,gridy+1>,gridx> ut = { };
 
-	// y doubleermediate velocity matrix
+	// y intermediate velocity matrix
 	std::array<std::array<double,gridy>,gridx+1> vt = { };
 
 	// coefficient matrix for pressure equations
@@ -60,6 +60,18 @@ public:
 	double mu = 0.001; // kinematic viscosity
 	double beta = 1.2; // SOR extrapolation factor
 	double h = 1.0/gridx; // grid height
+
+
+	/* Get/Set methods */
+	constexpr int getGridx()
+	{
+		return gridx;
+	}
+
+	constexpr int getGridy()
+	{
+		return gridy;
+	}
 
 };
 

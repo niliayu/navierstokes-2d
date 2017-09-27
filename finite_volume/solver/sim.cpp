@@ -8,5 +8,5 @@ int main()
 {
 Initialization init;
 init.fill_coeff_matrix();
-std::cout << init.coeff[0][0];
+
 }
