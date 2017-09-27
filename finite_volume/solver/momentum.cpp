@@ -9,12 +9,16 @@ void Momentum::velocity_calc(double h, double mu, double dt, std::array<std::arr
 {
 
 	// x direction velocity estimates
-	for(int x = 1; x < gridx; x++)
+	for(int x = 0; x < gridx; x++)
 	{
-		for(int y = 1; y < gridy + 1; y++)
+		for(int y = 0; y < gridy + 1; y++)
 		{
+		//if((y == 0) || (y == gridy))	
+		/* TODO: add call to boundary calculation */ 
+		//else if((x == 0) || (x == gridx))
+		/* TODO */
 
-		//stuff	
+		
 
 		}	
 	}	

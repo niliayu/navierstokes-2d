@@ -14,7 +14,6 @@ public:
 	static constexpr int gridx = 16;
 	static constexpr int gridy = 16;	
 
-
 	// x direction velocity matrix
 	std::array<std::array<double,gridy+1>,gridx> u = { };
 
@@ -48,6 +47,12 @@ public:
 	}
 	}
 
+	// vector boundary conditions
+	double u_top = 1;
+	double u_bottom = 0;
+	double v_left = 0;
+	double v_right = 0;
+
 
 	/* SIMULATION INITIALIZATION */
 	double time = 0.0;
@@ -73,6 +78,18 @@ public:
 		return gridy;
 	}
 
+
+	int getUTop(){ return u_top; }
+	int getUBottom(){return u_bottom; }
+	int getVLeft(){return v_left; }
+	int getVRight(){return v_right; }
+
+	int getMu(){return mu; }
+	int getH(){return h; }
+	int getBeta(){return beta; }
+	int getDt(){return dt; }
+	int getTime(){return time; }
+	int getTFinal(){return tfinal; }	
 };
 
 
