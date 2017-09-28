@@ -12,7 +12,7 @@ class Momentum
 
 	public:	
 
-		void velocity_calc(double h, double mu, double dt, std::array<std::array<double, gridy + 1>, gridx> & u_matrix, std::array<std::array<double, gridy>, gridx+1> & v_matrix, std::array<std::array<double, gridy + 1>, gridx> & return_u, std::array<std::array<double, gridy>, gridx+1> & return_v);
+		void velocity_calc(double h, double mu, double dt, std::array<std::array<double, gridy + 1>, gridx> & u, std::array<std::array<double, gridy>, gridx+1> & v, std::array<std::array<double, gridy + 1>, gridx> & return_u, std::array<std::array<double, gridy>, gridx+1> & return_v);
 
 }; 
 
