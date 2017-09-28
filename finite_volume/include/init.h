@@ -16,26 +16,27 @@ public:
 
 	// x direction velocity matrix
 	std::array<std::array<double,gridy+1>,gridx> u = { };
-	std::array<std::array<double,gridy+1>,gridx> & uptr = u;
+	std::array<std::array<double,gridy+1>,gridx> * uptr = &u;
+
 	// y direction velocity matrix
 	std::array<std::array<double,gridy>,gridx+1> v = { };
-	std::array<std::array<double,gridy>,gridx+1> & vptr = v;
+	std::array<std::array<double,gridy>,gridx+1> * vptr = & v;
 
 	// pressure matrix
 	std::array<std::array<double,gridy+1>,gridx+1> p = { };
-	std::array<std::array<double,gridy+1>,gridx+1> & pptr = p;
+	std::array<std::array<double,gridy+1>,gridx+1> * pptr = & p;
 
 	// x intermediate velocity matrix
 	std::array<std::array<double,gridy+1>,gridx> ut = { };
-	std::array<std::array<double,gridy+1>,gridx> & utptr = ut;
+	std::array<std::array<double,gridy+1>,gridx> * utptr = & ut;
 
 	// y intermediate velocity matrix
 	std::array<std::array<double,gridy>,gridx+1> vt = { };
-	std::array<std::array<double,gridy>,gridx+1> & vtptr = vt; 
+	std::array<std::array<double,gridy>,gridx+1> * vtptr = & vt; 
 
 	// coefficient matrix for pressure equations
 	std::array<std::array<double,gridy+1>,gridx+1> coeff = { };
-	std::array<std::array<double,gridy+1>,gridx+1> & coeffptr = coeff;
+	std::array<std::array<double,gridy+1>,gridx+1> * coeffptr = & coeff;
 	
 	// must run to initialize coefficient matrix
 	void fill_coeff_matrix(){
