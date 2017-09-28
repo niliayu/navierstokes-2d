@@ -1,8 +1,8 @@
 /* This file contains the main method and runs the simulation */
 
-//#include "../include/momentum.h"
+#include "../include/momentum.h"
 #include <iostream>
-#include "../include/init.h"
+//#include "../include/init.h"
 
 int main()
 {

@@ -4,13 +4,14 @@
 #include <cmath>
 
 /* Defer to boundary solver if at edge of control volume */
-void Momentum::velocity_calc(double h, double mu, double dt, std::array<std::array<double, gridy + 1>, gridx> & u, std::array<std::array<double, gridy>, gridx+1> & v, std::array<std::array<double, gridy + 1>, gridx> & return_u, std::array<std::array<double, gridy>, gridx+1> & return_v)
+void Momentum::velocity_calc(double h, double mu, double dt, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v, std::vector<std::vector<double>> & return_u, std::vector<std::vector<double>> & return_v)
 {
-
+	int xmax = u.size();
+	int ymax = v.size();	
 	// x direction velocity estimates
-	for(int x = 0; x < gridx; x++)
+	for(int x = 0; x < xmax; x++)
 	{
-		for(int y = 0; y < gridy + 1; y++)
+		for(int y = 0; y < ymax; y++)
 		{
 		//if((y == 0) || (y == gridy))	
 		/* TODO: add call to boundary calculation */ 

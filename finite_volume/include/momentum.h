@@ -5,15 +5,8 @@
 class Momentum
 {
 
-	private:
-		static Initialization init;
-		static constexpr int gridy = init.getGridx();
-		static constexpr int gridx = init.getGridy();
-
 	public:	
-//		template<std::size_t SIZE>
-	
-		void velocity_calc(double h, double mu, double dt, std::array<std::array<double, gridy + 1>, gridx> & u, std::array<std::array<double, gridy>, gridx+1> & v, std::array<std::array<double, gridy + 1>, gridx> & return_u, std::array<std::array<double, gridy>, gridx+1> & return_v);
+		void velocity_calc(double h, double mu, double dt, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v, std::vector<std::vector<double>> & return_u, std::vector<std::vector<double>> & return_v);
 
 }; 
 
