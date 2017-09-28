@@ -79,16 +79,16 @@ public:
 	}
 
 
-	int getUTop(){ return u_top; }
-	int getUBottom(){return u_bottom; }
-	int getVLeft(){return v_left; }
-	int getVRight(){return v_right; }
+	double getUTop(){ return u_top; }
+	double getUBottom(){return u_bottom; }
+	double getVLeft(){return v_left; }
+	double getVRight(){return v_right; }
 
-	int getMu(){return mu; }
-	int getH(){return h; }
-	int getBeta(){return beta; }
-	int getDt(){return dt; }
-	int getTime(){return time; }
+	double getMu(){return mu; }
+	double getH(){return h; }
+	double getBeta(){return beta; }
+	double getDt(){return dt; }
+	double getTime(){return time; }
 	int getTFinal(){return tfinal; }	
 };
 
