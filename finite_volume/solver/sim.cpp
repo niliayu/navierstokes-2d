@@ -12,7 +12,6 @@ Momentum veltemp;
 
 init.fill_coeff_matrix();
 
-std::cout << init.getH() << std::endl; 
-std::cout << init.h << std::endl;
+veltemp.velocity_calc(init.getH(), init.getMu(), init.getDt(), init.uptr, &init.v, &init.ut, &init.vt );
 
 }
