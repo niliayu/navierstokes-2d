@@ -95,6 +95,8 @@ public:
 	double getDt(){return dt; }
 	double getTime(){return time; }
 	int getTFinal(){return tfinal; }	
+
+	//TODO: Add get functions for references
 };
 
 

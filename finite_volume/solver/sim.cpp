@@ -12,6 +12,6 @@ Momentum veltemp;
 
 init.fill_coeff_matrix();
 
-veltemp.velocity_calc(init.getH(), init.getMu(), init.getDt(), init.uptr, &init.v, &init.ut, &init.vt );
+veltemp.velocity_calc(init.getH(), init.getMu(), init.getDt(), init.uptr, init.vptr, init.utptr, init.vtptr );
 
 }
