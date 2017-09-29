@@ -13,10 +13,10 @@ int main()
 
 
 	std::cout << "Before : " << std::endl;
-	printm.print(init.getU());	
+//	printm.print(init.getU());	
 	velocitystep.velocity_calc(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt()); 
 	std::cout << "After : " << std::endl;
-	printm.print(init.getU());	
+//	printm.print(init.getU());	
 
 }
 
