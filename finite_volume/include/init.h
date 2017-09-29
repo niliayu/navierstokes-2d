@@ -23,8 +23,8 @@ class Initialization
 		//grid initialization	
 		gridx(16), gridy(16), 
 		//velocity matrices	,
-		u(gridx, std::vector<double>(gridy)) ,
-		v(gridx, std::vector<double>(gridy)) ,
+		u(gridx, std::vector<double>(gridy, 0)) ,
+		v(gridx, std::vector<double>(gridy, 0)) ,
 		p(gridx, std::vector<double>(gridy)) ,
 		ut(gridx, std::vector<double>(gridy)) ,
 		vt(gridx, std::vector<double>(gridy)) ,
