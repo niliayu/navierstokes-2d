@@ -1,21 +1,11 @@
-INIT = ./finite_volume/include/init.h
-MOMENTUM_H = ./finite_volume/include/momentum.h 
+CPP_FILES := $(wildcard finite_volume/solver/*.cpp)
+OBJ_FILES := $(addprefix obj/, $(notdir $(CPP_FILES:.cpp=.o)))
+FLAGS := -c -Wall -std=gnu++14 -I/finite_elements/include
 
-MOMENTUM = ./finite_volume/solver/momentum.cpp 
+sim:	$(OBJ_FILES)
+	g++ -Wall -o $@ $^
+	./sim
 
-SIM = ./finite_volume/solver/sim.cpp
+obj/%.o:	finite_volume/solver/%.cpp
+	g++ $(FLAGS) -c -o $@ $<
 
-FLAGS = -c -Wall -std=gnu++14 -lwinmm -I/finite_elements/include 
-
-sim:	$(MOMENTUM) $(INIT) $(SIM) 
-	g++ $(FLAGS) $(MOMENTUM) -o momentum.o 	
-	g++ $(FLAGS) $(SIM) -o sim.o
-	g++ momentum.o sim.o -o run
-	./run
-
-clean:
-	rm *.o 
-
-all: sim clean 
-
-	

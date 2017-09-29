@@ -2,7 +2,6 @@
 
 #include "../include/momentum.h"
 #include <iostream>
-//#include "../include/init.h"
 
 int main()
 {
@@ -10,11 +9,14 @@ int main()
 
 	Momentum velocitystep;
 
-	std::vector<std::vector<double>> test = init.getU();
-	std::cout << "Presumably got U" << std::endl;
-	velocitystep.velocity_calc(init.getH(), init.getMu(), init.getDt(), test, test, test, test); 
-//	velocitystep.velocity_calc(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getU(), init.getU(), init.getU()); 
-	
+//	PrintMatrix printm; // DEBUG
+
+
+	std::cout << "Before : " << std::endl;
+	printm.print(init.getU());	
+	velocitystep.velocity_calc(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt()); 
+	std::cout << "After : " << std::endl;
+	printm.print(init.getU());	
 
 }
 

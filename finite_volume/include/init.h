@@ -91,6 +91,11 @@ class Initialization
 		int getTFinal(){return tfinal; }	
 	
 		std::vector<std::vector<double>> & getU() { return u; }	
+		std::vector<std::vector<double>> & getV() { return v; }	
+		std::vector<std::vector<double>> & getP() { return p; }	
+		std::vector<std::vector<double>> & getUt() { return ut; }	
+		std::vector<std::vector<double>> & getVt() { return vt; }	
+		std::vector<std::vector<double>> & getCoeff() { return coeff; }	
 	};
 
 
