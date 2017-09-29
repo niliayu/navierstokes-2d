@@ -46,14 +46,14 @@ class Initialization
 			}
 		}
 		}
-		
 		// vector boundary conditions
 		double u_top = 1;
 		double u_bottom = 0;
 		double v_left = 0;
 		double v_right = 0;
 	
-	
+	//TODO: Move these declarations and add to initialization list	
+	// OR add to functions and add to constructor	
 		/* SIMULATION INITIALIZATION */
 		double time = 0.0;
 	
@@ -77,7 +77,6 @@ class Initialization
 		{
 			return gridy;
 		}
-	/*
 	
 		double getUTop(){ return u_top; }
 		double getUBottom(){return u_bottom; }
@@ -91,9 +90,7 @@ class Initialization
 		double getTime(){return time; }
 		int getTFinal(){return tfinal; }	
 	
-		//TODO: Add get functions for references
-	
-	*/	
+		std::vector<std::vector<double>> & getU() { return u; }	
 	};
 
 
