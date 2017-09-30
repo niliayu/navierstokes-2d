@@ -7,10 +7,10 @@
 void Momentum::velocity_calc(double h, double mu, double dt, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v, std::vector<std::vector<double>> & return_u, std::vector<std::vector<double>> & return_v)
 {
 	int xmax = u.size();
-	int ymax = v.size();	
 	// x direction velocity estimates
 	for(int x = 1; x < xmax-1; x++)
 	{
+		int ymax = u[x].size();	
 		for(int y = 1; y < ymax-1; y++)
 		{
 		//if((y == 0) || (y == gridy))	
