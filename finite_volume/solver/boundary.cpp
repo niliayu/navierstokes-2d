@@ -1,20 +1,21 @@
 #include "../include/boundary.h"
+#include <iostream>
 
 void Boundary::boundary(double nval, double sval, double eval, double wval, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v)
 {
 	for(unsigned int x = 0; x < u.size(); x++)
 	{
-		north(nval, (u[x])[0]);
-		south(sval, (u[x])[u[x].size()-2]);
+		(u[x])[0] = north(nval, (u[x])[0]);
+		(u[x])[u[x].size()-2] = south(sval, (u[x])[u[x].size()-2]);
 	}
 
 	for(unsigned int y = 0; y < v[0].size(); y++)
 	{
-		west(wval, (u[1])[y]);
+		(u[1])[y] = west(wval, (u[1])[y]);
 	}
 	for(unsigned int y = 0; y < v[v.size()-1].size(); y++)
 	{
-		east(eval, (v[v.size()-1])[y]);
+		(v[v.size()-1])[y] = east(eval, (v[v.size()-1])[y]);
 	}	
 }
 

@@ -6,29 +6,37 @@
 
 class Initialization
 {
+	//grid initialization	
 	int gridx;
 	int gridy;	
 	
+	//velocity matrices	,
 	std::vector< std::vector<double> > u; 
 	std::vector< std::vector<double> > v; 
 	std::vector< std::vector<double> > p; 
 	std::vector< std::vector<double> > ut; 
 	std::vector< std::vector<double> > vt; 
 	std::vector< std::vector<double> > coeff; 
+	
+	// vector boundary conditions
+	double u_top;
+	double u_bottom;
+	double v_left;
+	double v_right;
 			
 	public:
 		/* MESH INITIALIZATION */
 	
 	Initialization(): 
-		//grid initialization	
 		gridx(16), gridy(16), 
-		//velocity matrices	,
 		u(gridx, std::vector<double>(gridy, 0)) ,
 		v(gridx, std::vector<double>(gridy, 0)) ,
 		p(gridx, std::vector<double>(gridy)) ,
 		ut(gridx, std::vector<double>(gridy)) ,
 		vt(gridx, std::vector<double>(gridy)) ,
-		coeff(gridx, std::vector<double>(gridy))
+		coeff(gridx, std::vector<double>(gridy)),
+		u_top(1), u_bottom(0),
+		v_left(0), v_right(0)
 		{
 			fill_coeff_matrix();	
 		}
@@ -46,12 +54,7 @@ class Initialization
 			}
 		}
 		}
-		// vector boundary conditions
-		double u_top = 1;
-		double u_bottom = 0;
-		double v_left = 0;
-		double v_right = 0;
-	
+
 	//TODO: Move these declarations and add to initialization list	
 	// OR add to functions and add to constructor	
 		/* SIMULATION INITIALIZATION */
