@@ -30,5 +30,18 @@ void Momentum::velocity_intermediate(double h, double mu, double dt, std::vector
 	}	
 }
 
+void Momentum::velocity_correction(double h, double dt, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v, std::vector<std::vector<double>> & u_temp, std::vector<std::vector<double>> & v_temp, std::vector<std::vector<double>> & p)  
+{
+
+for(unsigned int x = 1; x < u.size()-1; x++)
+{
+	for(unsigned int y = 1; y < u[x].size()-1; x++)
+	{
+		u[x][y] = u_temp[x][y] - (dt/h)*(p[x+1][y] - p[x][y]);
+		v[x][y] = v_temp[x][y] - (dt/h)*(p[x][y+1] - p[x][y]); 
+	}
+}
+
+}
 
 
