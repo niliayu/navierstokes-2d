@@ -2,6 +2,7 @@
 #include "../include/printmatrix.h"
 #include "../include/momentum.h"
 #include "../include/boundary.h"
+#include "../include/pressure.h"
 #include <iostream>
 
 int main()
@@ -10,16 +11,23 @@ int main()
 	Momentum velocitystep;
 	PrintMatrix printm; // DEBUG
 	Boundary boundary;
+	Pressure pressurestep;
+	
+	for(int i = 0; i < 10; i++)
+	{
+		boundary.boundary(init.getUTop(), init.getUBottom(), init.getVLeft(), init.getVRight(), init.getU(), init.getV());	
+		velocitystep.velocity_calc(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt()); 
+		pressurestep.pressure_calc(init.getBeta(), init.getH(), init.getDt(), init.getP(), init.getUt(), init.getVt(), init.getCoeff());
 
-
-	std::cout << "Before : " << std::endl;
+	std::cout << "U Velocity : " << std::endl;
 	printm.print(init.getU());	
 
-	boundary.boundary(init.getUTop(), init.getUBottom(), init.getVLeft(), init.getVRight(), init.getU(), init.getV());	
-	velocitystep.velocity_calc(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt()); 
+	std::cout << "V Velocity : " << std::endl;
+	printm.print(init.getV());	
 
-	std::cout << "After : " << std::endl;
-	printm.print(init.getU());	
-
+	std::cout << "Pressure : " << std::endl;
+	printm.print(init.getP());	
+	}
 }
+
 
