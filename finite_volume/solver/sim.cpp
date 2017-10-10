@@ -7,7 +7,6 @@
 
 int main()
 {
-
 	Initialization init;
 	Momentum velocitystep;
 	PrintMatrix printm; // DEBUG
@@ -30,7 +29,6 @@ int main()
 	std::cout << "Pressure : " << std::endl;
 	printm.print(init.getP());	
 	}
-	
 }
 
 
