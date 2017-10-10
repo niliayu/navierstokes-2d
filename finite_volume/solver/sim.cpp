@@ -4,6 +4,7 @@
 #include "../include/boundary.h"
 #include "../include/pressure.h"
 #include <iostream>
+//#include "../include/gnuplot-iostream.h"
 
 int main()
 {
