@@ -40,4 +40,22 @@ double Boundary::west(double west, double cell_value)
 	return 2*west-cell_value;
 }
 
+double Boundary::circle((double radius, double xcenter, double ycenter, double xpos, double ypos)
+{
+
+	double position = pow((xpos - xcenter), 2) + pow((ypos - ycenter), 2);
+
+	if(position > sqrt(radius))
+	{
+		return 0.0;
+	}else{
+
+		double chk = radius*sqrt(2.0)/2.0; 
+//		if(position > (chk+xcenter))
+			
+
+	}
+	
+
+}
 
