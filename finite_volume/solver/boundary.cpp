@@ -40,7 +40,7 @@ double Boundary::west(double west, double cell_value)
 	return 2*west-cell_value;
 }
 
-double Boundary::circle((double radius, double xcenter, double ycenter, double xpos, double ypos)
+double Boundary::circle(double radius, double xcenter, double ycenter, double xpos, double ypos)
 {
 
 	double position = pow((xpos - xcenter), 2) + pow((ypos - ycenter), 2);
