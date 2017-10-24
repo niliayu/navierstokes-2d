@@ -17,7 +17,13 @@ class Initialization
 	std::vector< std::vector<double> > ut; 
 	std::vector< std::vector<double> > vt; 
 	std::vector< std::vector<double> > coeff; 
-	
+
+	//ignore vector
+	std::vector<double> xignore;
+	std::vector<double> yignore;
+	std::vector<double> xedges;
+	std::vector<double> yedges;
+
 	// vector boundary conditions
 	double u_top;
 	double u_bottom;

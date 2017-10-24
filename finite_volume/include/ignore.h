@@ -1,19 +1,16 @@
+#include <vector>
 #include <cmath>
+#include <algorithm>
 
 class Ignore
 {
 
 	public:
-		void circle(double radius, double xcenter, double ycenter, double xpos, double ypos)
-		{
+		void circle(double radius, double xcenter, double ycenter, double xpos, double ypos, std::vector<double> xignore, std::vector<double> yignore); 
 
-			double position = pow((xpos - xcenter), 2) + pow((ypos - ycenter), 2);
-		
-			if(position > sqrt(radius))
-				return 0.0;
+		bool checker(double xpos, double ypos, std::vector<double> xignore, std::vector<double> yignore);
 
-		}
+		double obj_boundary(double xpos, double ypos, std::vector<double> xignore, std::vector<double> yignore);
 
-}
-
+}; 
 

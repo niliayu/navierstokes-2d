@@ -12,7 +12,6 @@ class Boundary
 		double east(double eval, double cell_value);
 		double west(double wval, double cell_value);
 
-		double circle(double radius, double xcenter, double ycenter, double xpos, double ypos);
 };
 
 
