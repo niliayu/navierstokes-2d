@@ -27,8 +27,8 @@
 
 	}
 
-	double Ignore::obj_boundary(double xpos, double ypos, std::vector<double> xignore, std::vector<double> yignore)
-	{
+	double Ignore::obj_boundary(double xpos, double ypos, std::vector<double> xignore, std::vector<double> yignore, std::vector<double> xedges, std::vector<double> yedges, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v)
+{
 		if (std::find(xignore.begin(), xignore.end(), xpos) != xignore.end())
 		{
 			if(std::find(yignore.begin(), yignore.end(), ypos+1) != yignore.end())
