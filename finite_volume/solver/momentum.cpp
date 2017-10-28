@@ -29,7 +29,7 @@ void Momentum::velocity_intermediate(double h, double mu, double dt, std::vector
 		return_v[x][y] = v[x][y] + dt*(-(0.25/h)*((u[x][y+1]+u[x][y])
 					*(v[x+1][y]+v[x][y]) - (u[x-1][y+1]+u[x-1][y])
 					*(v[x-1][y]+v[x][y]) + (pow((v[x][y+1]+v[x][y]),2.0)
-					       	- pow((u[x][y-1]+u[x][y]),2.0))) 
+					       	- pow((v[x][y-1]+v[x][y]),2.0))) 
 				+ (mu/pow(h,2.0))*(v[x+1][y]+v[x-1][y]+v[x][y+1]+v[x][y-1]
 					-(4*v[x][y]))); 
 
