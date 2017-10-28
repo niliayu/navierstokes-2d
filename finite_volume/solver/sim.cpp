@@ -14,7 +14,7 @@ int main()
 	Boundary boundary;
 	Pressure pressurestep;
 	
-	for(int i = 0; i < 10; i++)
+	for(int i = 0; i < 1; i++)
 	{
 		boundary.boundary(init.getUTop(), init.getUBottom(), init.getVLeft(), init.getVRight(), init.getU(), init.getV());	
 		velocitystep.velocity_intermediate(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt()); 
@@ -22,10 +22,10 @@ int main()
 		velocitystep.velocity_correction(init.getH(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt(), init.getP());
 
 	std::cout << "U Velocity : " << std::endl;
-	printm.print(init.getU());	
+	printm.print(init.getUt());	
 
 	std::cout << "V Velocity : " << std::endl;
-	printm.print(init.getV());	
+	printm.print(init.getVt());	
 
 	std::cout << "Pressure : " << std::endl;
 	printm.print(init.getP());	

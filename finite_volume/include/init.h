@@ -29,7 +29,18 @@ class Initialization
 	double u_bottom;
 	double v_left;
 	double v_right;
-			
+
+	double time;
+
+	// fixed time stepping
+	double dt;
+	int tfinal;
+
+	int psolvit; //pressure solver max iterations
+	double mu; // kinematic viscosity
+	double beta; // SOR extrapolation factor
+	double h; // grid height
+	
 	public:
 		/* MESH INITIALIZATION */
 	
@@ -42,39 +53,31 @@ class Initialization
 		vt(gridx, std::vector<double>(gridy)) ,
 		coeff(gridx, std::vector<double>(gridy)),
 		u_top(1), u_bottom(0),
-		v_left(0), v_right(0)
+		v_left(0), v_right(0),
+		dt(0.005),
+		tfinal(100),
+	
+		psolvit(100), //pressure solver max iterations
+		mu(0.001), // kinematic viscosity
+		beta(1.2), // SOR extrapolation factor
+		h(1.0/gridx) // grid height
 		{
 			fill_coeff_matrix();	
 		}
 	
 		// must run to initialize coefficient matrix
 		void fill_coeff_matrix(){
-		for(int x = 0; x < gridx; x++){
-			for(int y = 0; y < gridy; y++){
-				if(x == y) //this is a corner
-					coeff[x][y] = 0.5;
-				else if((x == 0) || (x == gridx)) //this is an edge
-					coeff[x][y] = 1.0/3.0;
-				else //inside the grid
-					coeff[x][y] = 0.25;
+			for(int x = 0; x < gridx; x++){
+				for(int y = 0; y < gridy; y++){
+					if(x == y) //this is a corner
+						coeff[x][y] = 0.5;
+					else if((x == 0) || (x == gridx)) //this is an edge
+						coeff[x][y] = 1.0/3.0;
+					else //inside the grid
+						coeff[x][y] = 0.25;
+				}
 			}
 		}
-		}
-
-	//TODO: Move these declarations and add to initialization list	
-	// OR add to functions and add to constructor	
-		/* SIMULATION INITIALIZATION */
-		double time = 0.0;
-	
-		// fixed time stepping
-		double dt = 0.01;
-		int tfinal = 100;
-	
-		int psolvit = 100; //pressure solver max iterations
-		double mu = 0.001; // kinematic viscosity
-		double beta = 1.2; // SOR extrapolation factor
-		double h = 1.0/gridx; // grid height
-	
 	
 		/* Get/Set methods */
 		int getGridx()
