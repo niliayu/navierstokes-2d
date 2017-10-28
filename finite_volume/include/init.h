@@ -36,7 +36,7 @@ class Initialization
 	double dt;
 	int tfinal;
 
-	int psolvit; //pressure solver max iterations
+	int maxit; //pressure solver max iterations
 	double mu; // kinematic viscosity
 	double beta; // SOR extrapolation factor
 	double h; // grid height
@@ -57,7 +57,7 @@ class Initialization
 		dt(0.005),
 		tfinal(100),
 	
-		psolvit(100), //pressure solver max iterations
+		maxit(100), //pressure solver max iterations
 		mu(0.001), // kinematic viscosity
 		beta(1.2), // SOR extrapolation factor
 		h(1.0/gridx) // grid height
@@ -86,21 +86,15 @@ class Initialization
 		}
 	
 		/* Get/Set methods */
-		int getGridx()
-		{
-			return gridx;
-		}
-	
-		int getGridy()
-		{
-			return gridy;
-		}
+		int getGridx(){ return gridx; }
+		int getGridy(){ return gridy; }
 	
 		double getUTop(){ return u_top; }
 		double getUBottom(){return u_bottom; }
 		double getVLeft(){return v_left; }
 		double getVRight(){return v_right; }
-	
+
+		double getMaxIt(){return maxit; }	
 		double getMu(){return mu; }
 		double getH(){return h; }
 		double getBeta(){return beta; }

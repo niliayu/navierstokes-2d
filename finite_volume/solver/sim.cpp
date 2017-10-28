@@ -20,11 +20,8 @@ int main()
 	{
 		boundary.boundary(init.getUTop(), init.getUBottom(), init.getVLeft(), init.getVRight(), init.getU(), init.getV());	
 		velocitystep.velocity_intermediate(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt()); 
-		pressurestep.pressure_calc(init.getBeta(), init.getH(), init.getDt(), init.getP(), init.getUt(), init.getVt(), init.getCoeff());
+		pressurestep.pressure_calc(init.getBeta(), init.getH(), init.getDt(), init.getMaxIt(), init.getP(), init.getUt(), init.getVt(), init.getCoeff());
 		velocitystep.velocity_correction(init.getH(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt(), init.getP());
-
-	std::cout << "Coeff matrix : " << std::endl;
-	printm.print(init.getCoeff());	
 
 	std::cout << "U Velocity : " << std::endl;
 	printm.print(init.getUt());	
