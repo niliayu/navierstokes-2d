@@ -1,9 +1,11 @@
 /* This file contains the main method and runs the simulation */
+#include "../include/init.h"
 #include "../include/printmatrix.h"
 #include "../include/momentum.h"
 #include "../include/boundary.h"
 #include "../include/pressure.h"
 #include <iostream>
+
 //#include "../include/gnuplot-iostream.h"
 
 int main()
