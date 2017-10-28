@@ -69,12 +69,12 @@ class Initialization
 		void fill_coeff_matrix(){
 			for(int x = 0; x < gridx; x++){
 				for(int y = 0; y < gridy; y++){
-					if((x == 0) || (x == gridx-1)){ //this is an edge
+					if((x == 1) || (x == gridx-2)){ //this is an edge
 						coeff[x][y] = 1.0/3.0;
 						if(x == y) //this is a corner
 							coeff[x][y] = 0.5;
 					}
-					else if((y == 0) || (y == gridx-1)){ //this is an edge
+					else if((y == 1) || (y == gridx-2)){ //this is an edge
 						coeff[x][y] = 1.0/3.0;
 						if(x == y) //this is a corner
 							coeff[x][y] = 0.5;

@@ -11,7 +11,7 @@ void Boundary::boundary(double nval, double sval, double eval, double wval, std:
 
 	for(unsigned int y = 0; y < v[0].size(); y++)
 	{
-		(u[1])[y] = west(wval, (u[1])[y]);
+		(v[1])[y] = west(wval, (v[1])[y]);
 	}
 	for(unsigned int y = 0; y < v[v.size()-1].size(); y++)
 	{
