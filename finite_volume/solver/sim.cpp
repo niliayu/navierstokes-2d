@@ -18,15 +18,22 @@ int main()
 	
 	for(int i = 0; i < 10; i++)
 	{
-	std::cout << "Pressure before : " << std::endl;
-	printm.print(init.getP());	
+//	std::cout << "Pressure before : " << std::endl;
+//	printm.print(init.getP());	
 
 	
 		boundary.boundary(init.getUTop(), init.getUBottom(), init.getVLeft(), init.getVRight(), init.getU(), init.getV());	
 		velocitystep.velocity_intermediate(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt()); 
 		pressurestep.pressure_calc(init.getBeta(), init.getH(), init.getDt(), init.getMaxIt(), init.getP(), init.getUt(), init.getVt(), init.getCoeff());
 		velocitystep.velocity_correction(init.getH(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt(), init.getP());
-/*
+
+	std::cout << "Ut Velocity : " << std::endl;
+	printm.print(init.getUt());	
+
+	std::cout << "Vt Velocity : " << std::endl;
+	printm.print(init.getVt());	
+
+
 	std::cout << "U Velocity : " << std::endl;
 	printm.print(init.getU());	
 
@@ -35,7 +42,7 @@ int main()
 
 	std::cout << "Pressure : " << std::endl;
 	printm.print(init.getP());	
-*/
+
 	}
 }
 
