@@ -21,6 +21,8 @@ int main()
 //	std::cout << "Pressure before : " << std::endl;
 //	printm.print(init.getP());	
 
+	std::cout << "Coefficients : " << std::endl;
+	printm.print(init.getCoeff());	
 	
 		boundary.boundary(init.getUTop(), init.getUBottom(), init.getVLeft(), init.getVRight(), init.getU(), init.getV());	
 		velocitystep.velocity_intermediate(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt()); 
@@ -32,7 +34,6 @@ int main()
 
 	std::cout << "Vt Velocity : " << std::endl;
 	printm.print(init.getVt());	
-
 
 	std::cout << "U Velocity : " << std::endl;
 	printm.print(init.getU());	

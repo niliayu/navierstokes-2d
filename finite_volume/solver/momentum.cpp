@@ -44,8 +44,8 @@ for(unsigned int x = 1; x < u.size()-1; x++)
 {
 	for(unsigned int y = 1; y < u[x].size()-1; y++)
 	{
-		u[x][y] = u_temp[x][y] - (dt/h)*(p[x+1][y] - p[x][y]);
-		v[x][y] = v_temp[x][y] - (dt/h)*(p[x][y+1] - p[x][y]); 
+		u[x][y] = u_temp[x][y] - (dt/h)*(-p[x+1][y] + p[x][y]);
+		v[x][y] = v_temp[x][y] - (dt/h)*(-p[x][y+1] + p[x][y]); 
 	}
 }
 

@@ -45,7 +45,7 @@ class Initialization
 		/* MESH INITIALIZATION */
 	
 	Initialization(): 
-		gridx(16), gridy(16), 
+		gridx(18), gridy(18), 
 		u(gridx, std::vector<double>(gridy, 0)) ,
 		v(gridx, std::vector<double>(gridy, 0)) ,
 		p(gridx, std::vector<double>(gridy)) ,
@@ -60,7 +60,7 @@ class Initialization
 		maxit(100), //pressure solver max iterations
 		mu(0.001), // kinematic viscosity
 		beta(1.2), // SOR extrapolation factor
-		h(1.0/gridx) // grid height
+		h(1.0/(gridx-2)) // grid height
 		{
 			fill_coeff_matrix();	
 		}
@@ -69,15 +69,11 @@ class Initialization
 		void fill_coeff_matrix(){
 			for(int x = 0; x < gridx; x++){
 				for(int y = 0; y < gridy; y++){
-					if((x == 1) || (x == gridx-2)){ //this is an edge
-						coeff[x][y] = 1.0/3.0;
-						if(x == y) //this is a corner
+					if(((x == 1) || (x == gridx-2) || (y == 1) || (y == gridy-2))&&(x!=0&&y!=0&&x!=gridx-1&&y!=gridy-1)){ //this is an edge
+						if(x == y||x==y+gridy-3||y==x+gridx-3) //this is a corner
 							coeff[x][y] = 0.5;
-					}
-					else if((y == 1) || (y == gridx-2)){ //this is an edge
-						coeff[x][y] = 1.0/3.0;
-						if(x == y) //this is a corner
-							coeff[x][y] = 0.5;
+						else
+							coeff[x][y] = 1.0/3.0;
 					}
 					else //inside the grid
 						coeff[x][y] = 0.25;
