@@ -46,11 +46,11 @@ class Initialization
 	
 	Initialization(): 
 		gridx(18), gridy(18), 
-		u(gridx, std::vector<double>(gridy, 0)) ,
-		v(gridx, std::vector<double>(gridy, 0)) ,
+		u(gridx-1, std::vector<double>(gridy, 0)) ,
+		v(gridx, std::vector<double>(gridy-1, 0)) ,
 		p(gridx, std::vector<double>(gridy)) ,
-		ut(gridx, std::vector<double>(gridy)) ,
-		vt(gridx, std::vector<double>(gridy)) ,
+		ut(gridx-1, std::vector<double>(gridy)) ,
+		vt(gridx, std::vector<double>(gridy-1)) ,
 		coeff(gridx, std::vector<double>(gridy)),
 		u_top(1), u_bottom(0),
 		v_left(0), v_right(0),
