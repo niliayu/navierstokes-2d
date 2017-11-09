@@ -98,6 +98,11 @@ class Initialization
 		double getTime(){return time; }
 		int getTFinal(){return tfinal; }	
 	
+		std::vector<double> & getXignore(){ return xignore; }
+		std::vector<double> & getYignore(){ return yignore; }
+		std::vector<double> & getXedges(){ return xedges; } 
+		std::vector<double> & getYedges(){ return yedges; } 
+
 		std::vector<std::vector<double>> & getU() { return u; }	
 		std::vector<std::vector<double>> & getV() { return v; }	
 		std::vector<std::vector<double>> & getP() { return p; }	
