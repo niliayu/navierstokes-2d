@@ -2,7 +2,8 @@
 #include "../include/boundary.h"
 #include <iostream>
 
-	void Ignore::circle(double radius, double xcenter, double ycenter, double xpos, double ypos, std::vector<double> xignore, std::vector<double> yignore, std::vector<double> xedges, std::vector<double> yedges)
+
+	void Ignore::circle(double radius, double xcenter, double ycenter, double xpos, double ypos, std::vector<double> & xignore, std::vector<double> & yignore, std::vector<double> & xedges, std::vector<double> & yedges)
 		{
 
 			double position = sqrt(pow((xpos - xcenter), 2) 
@@ -23,9 +24,9 @@
 		}
 
 
-	bool Ignore::checker(double xpos, double ypos, std::vector<double> xignore, std::vector<double> yignore, std::vector<double> xedges, std::vector<double> yedges)
+	bool Ignore::checker(double xpos, double ypos, std::vector<double> & xignore, std::vector<double> & yignore, std::vector<double> & xedges, std::vector<double> & yedges)
 	{
-
+		
 		return ((std::find(xignore.begin(), xignore.end(), xpos) != xignore.end())
 			&& (std::find(yignore.begin(), yignore.end(), ypos) != yignore.end())
 			&& (std::find(xignore.begin(), xignore.end(), xpos) != xignore.end())
@@ -33,7 +34,7 @@
 
 	}
 
-	void Ignore::obj_boundary(double xpos, double ypos, std::vector<double> xignore, std::vector<double> yignore, std::vector<double> xedges, std::vector<double> yedges, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v)
+	void Ignore::obj_boundary(double xpos, double ypos, std::vector<double> & xignore, std::vector<double> & yignore, std::vector<double> & xedges, std::vector<double> & yedges, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v)
 {
 	Boundary bound;
 

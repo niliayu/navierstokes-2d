@@ -23,6 +23,7 @@ int main()
 	double xcenter = 8.0;
 	double ycenter = 3.0;
 	//populate ignore vector
+
 	for(unsigned int x = 0; x < (init.getU()).size(); x++)
 	{
 		for(unsigned int y = 0; y < (init.getV())[x].size(); y++)
@@ -30,7 +31,7 @@ int main()
 			object.circle(radius, xcenter, ycenter, x, y, init.getXignore(), init.getYignore(), init.getXedges(), init.getYedges());
 		}
 	}	
-					
+
 
 	for(int i = 0; i < 100; i++)
 	{
@@ -39,7 +40,6 @@ int main()
 
 //	std::cout << "Coefficients : " << std::endl;
 //	printm.print(init.getCoeff());	
-
 
 				boundary.boundary(init.getUTop(), init.getUBottom(), init.getVLeft(), init.getVRight(), init.getU(), init.getV());	
 		velocitystep.velocity_intermediate(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt(), init.getXignore(), init.getYignore(), init.getXedges(), init.getYedges()); 
@@ -60,7 +60,7 @@ int main()
 
 	std::cout << "Vt Velocity : " << std::endl;
 	printm.print(init.getVt());	
-
+*/
 	std::cout << "U Velocity : " << std::endl;
 	printm.print(init.getU());	
 
@@ -69,7 +69,7 @@ int main()
 
 	std::cout << "Pressure : " << std::endl;
 	printm.print(init.getP());	
-*/
+
 	}
 }
 

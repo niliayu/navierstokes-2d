@@ -4,7 +4,7 @@
 #include "../include/ignore.h"
 #include <cmath>
 
-void Momentum::velocity_intermediate(double h, double mu, double dt, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v, std::vector<std::vector<double>> & return_u, std::vector<std::vector<double>> & return_v, std::vector<double> xignore, std::vector<double> yignore, std::vector<double> xedges, std::vector<double> yedges)
+void Momentum::velocity_intermediate(double h, double mu, double dt, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v, std::vector<std::vector<double>> & return_u, std::vector<std::vector<double>> & return_v, std::vector<double> & xignore, std::vector<double> & yignore, std::vector<double> & xedges, std::vector<double> & yedges)
 {
 	Ignore object;
 
@@ -46,14 +46,15 @@ void Momentum::velocity_intermediate(double h, double mu, double dt, std::vector
 	}
 }	
 
-void Momentum::velocity_correction(double h, double dt, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v, std::vector<std::vector<double>> & u_temp, std::vector<std::vector<double>> & v_temp, std::vector<std::vector<double>> & p, std::vector<double> xignore, std::vector<double> yignore, std::vector<double> xedges, std::vector<double> yedges)  
+void Momentum::velocity_correction(double h, double dt, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v, std::vector<std::vector<double>> & u_temp, std::vector<std::vector<double>> & v_temp, std::vector<std::vector<double>> & p, std::vector<double> & xignore, std::vector<double> & yignore, std::vector<double> & xedges, std::vector<double> & yedges)  
 {
+
 	Ignore object;
 	for(unsigned int x = 1; x < u.size()-1; x++)
 	{
 		for(unsigned int y = 1; y < u[x].size()-1; y++)
 		{
-			if(object.checker(x, y, xignore, yignore, xedges, yedges))
+			if(!object.checker(x, y, xignore, yignore, xedges, yedges))
 				u[x][y] = u_temp[x][y] - (dt/h)*(-p[x+1][y] + p[x][y]);
 		}
 	}
@@ -62,11 +63,10 @@ void Momentum::velocity_correction(double h, double dt, std::vector<std::vector<
 	{
 		for(unsigned int y = 1; y < v[x].size()-1; y++)
 		{
-			if(object.checker(x, y, xignore, yignore, xedges, yedges))
+			if(!object.checker(x, y, xignore, yignore, xedges, yedges))
 				v[x][y] = v_temp[x][y] - (dt/h)*(-p[x][y+1] + p[x][y]); 
 		}
 	}
-
 
 }
 
