@@ -27,10 +27,10 @@
 	bool Ignore::checker(double xpos, double ypos, std::vector<double> & xignore, std::vector<double> & yignore, std::vector<double> & xedges, std::vector<double> & yedges)
 	{
 		
-		return ((std::find(xignore.begin(), xignore.end(), xpos) != xignore.end())
-			&& (std::find(yignore.begin(), yignore.end(), ypos) != yignore.end())
-			&& (std::find(xignore.begin(), xignore.end(), xpos) != xignore.end())
-			&& (std::find(yignore.begin(), yignore.end(), ypos) != yignore.end())); 
+		return (((std::find(xignore.begin(), xignore.end(), xpos) != xignore.end())
+			&& (std::find(yignore.begin(), yignore.end(), ypos) != yignore.end()))
+			|| ((std::find(xedges.begin(), xedges.end(), xpos) != xedges.end())
+			&& (std::find(yedges.begin(), yedges.end(), ypos) != yedges.end()))); 
 
 	}
 
