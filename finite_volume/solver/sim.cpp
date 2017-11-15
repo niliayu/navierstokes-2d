@@ -5,6 +5,7 @@
 #include "../include/momentum.h"
 #include "../include/boundary.h"
 #include "../include/pressure.h"
+#include "../include/writetocsv.h"
 #include <iostream>
 
 //#include "../include/gnuplot-iostream.h"

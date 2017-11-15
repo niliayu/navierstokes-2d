@@ -1,3 +1,5 @@
+g++ -Wall -o sim obj/printmatrix.o obj/sim.o obj/ignore.o obj/momentum.o obj/boundary.o obj/writetocsv.o obj/pressure.o  
+./sim
 U check: 0
 U check: 0
 U check: 0
