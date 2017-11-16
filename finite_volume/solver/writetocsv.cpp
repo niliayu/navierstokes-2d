@@ -16,8 +16,6 @@ void WriteToCSV::write( const std::string& filename, std::vector<std::vector<dou
 		}
 		openfile << "\n"; 
 	}
-	//may remove this newline to simplify MATLAB offsets
-	openfile << "\n";
 	openfile.close();
 }
 

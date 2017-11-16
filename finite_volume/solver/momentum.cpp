@@ -16,10 +16,6 @@ void Momentum::velocity_intermediate(double h, double mu, double dt, std::vector
 			{
 			if(!object.checker(x, y, xignore, yignore, xedges, yedges)){
 
-				std::cout << "U check: " << object.checker(x, y, xignore, yignore, xedges, yedges) << std::endl; 
-//				std::cout << "sizes: " << xedges.size() << " " << xignore.size() << std::endl;
-
-
 				return_u[x][y] = u[x][y] + dt*((-0.25/h)*(pow((u[x-1][y]+u[x][y]),2.0) 
 						- pow((u[x+1][y]+u[x][y]),2.0) 
 						+ ((u[x][y-1]+u[x][y])*(v[x-1][y]+v[x][y])) 
@@ -60,7 +56,6 @@ void Momentum::velocity_correction(double h, double dt, std::vector<std::vector<
 	{
 		for(unsigned int y = 1; y < u[x].size()-1; y++)
 		{
-				std::cout << "U check: " << object.checker(x, y, xignore, yignore, xedges, yedges) << std::endl; 
 			if(!object.checker(x, y, xignore, yignore, xedges, yedges))
 				u[x][y] = u_temp[x][y] - (dt/h)*(-p[x+1][y] + p[x][y]);
 		}
@@ -74,7 +69,6 @@ void Momentum::velocity_correction(double h, double dt, std::vector<std::vector<
 				v[x][y] = v_temp[x][y] - (dt/h)*(-p[x][y+1] + p[x][y]); 
 		}
 	}
-
 }
 
 

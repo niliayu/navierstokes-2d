@@ -18,6 +18,7 @@ int main()
 	PrintMatrix printm; // DEBUG
 	Boundary boundary;
 	Pressure pressurestep;
+	WriteToCSV writer;
 
 	//circle parameters
 	double radius = 1.0;
@@ -61,7 +62,7 @@ int main()
 
 	std::cout << "Vt Velocity : " << std::endl;
 	printm.print(init.getVt());	
-*/
+
 	std::cout << "U Velocity : " << std::endl;
 	printm.print(init.getU());	
 
@@ -70,6 +71,11 @@ int main()
 
 	std::cout << "Pressure : " << std::endl;
 	printm.print(init.getP());	
+*/
+
+	writer.write("udata", init.getU());
+	writer.write("vdata", init.getV());
+	writer.write("pdata", init.getP());
 
 	}
 }
