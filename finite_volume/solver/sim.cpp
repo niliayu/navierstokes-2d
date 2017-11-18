@@ -30,13 +30,34 @@ void Simulation::drivenCavity(int timesteps)
 }
 
 
-void cylinderRe20(int timesteps)
+void Simulation::cylinderRe20(int timesteps)
 {
+	
+	//initialize objects
+	Initialization init(18,18);
+	Momentum velocitystep;
+	Boundary boundary;
+	Pressure pressurestep;
+	WriteToCSV writer;
+
+	//run simulation
+	for(int i = 0; i < timesteps; i++)
+	{
+		boundary.boundary(init.getUTop(), init.getUBottom(), init.getU(), init.getV());
+		velocitystep.velocity_intermediate(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt(), init.getXignore(), init.getYignore(), init.getXedges(), init.getYedges()); 
+		pressurestep.pressure_calc(init.getBeta(), init.getH(), init.getDt(), init.getMaxIt(), init.getP(), init.getUt(), init.getVt(), init.getCoeff(), init.getXignore(), init.getYignore(), init.getXedges(), init.getYedges());
+		velocitystep.velocity_correction(init.getH(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt(), init.getP(), init.getXignore(), init.getYignore(), init.getXedges(), init.getYedges());
+	
+		//export data
+		writer.write("udata_RE20", init.getU());
+		writer.write("vdata_RE20", init.getV());
+		writer.write("pdata_RE20", init.getP());
+	}
 
 }
 
 
-void cylinderRe100(int timesteps)
+void Simulation::cylinderRe100(int timesteps)
 {
 
 

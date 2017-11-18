@@ -1,6 +1,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <cmath>
 
 // Initialization of flow problem
 
@@ -80,7 +81,7 @@ class Initialization
 				}
 			}
 		}
-	
+
 		/* Get/Set methods */
 		int getGridx(){ return gridx; }
 		int getGridy(){ return gridy; }

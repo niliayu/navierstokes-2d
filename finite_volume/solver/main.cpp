@@ -6,7 +6,7 @@ int main()
 	
 	Simulation sim;
 	sim.drivenCavity(50);
-//	sim.cylinderRe20(10);
+	sim.cylinderRe20(10);
 //	sim.cylinderRe100(10);	
 }
 
