@@ -1,5 +1,6 @@
 #include "../include/writetocsv.h"
 #include <iostream>
+#include <stdio.h>
 
 void WriteToCSV::write( const std::string& filename, std::vector<std::vector<double>> & mat)
 {
@@ -17,6 +18,13 @@ void WriteToCSV::write( const std::string& filename, std::vector<std::vector<dou
 		openfile << "\n"; 
 	}
 	openfile.close();
+}
+
+void WriteToCSV::deletefile( const std::string& filename)
+{
+
+	std::remove((filename + ".csv").c_str()); 
+
 }
 
 

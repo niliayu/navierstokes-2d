@@ -14,6 +14,11 @@ void Simulation::drivenCavity(int timesteps)
 	Pressure pressurestep;
 	WriteToCSV writer;
 
+	writer.deletefile("udata_DC");
+	writer.deletefile("vdata_DC");
+	writer.deletefile("pdata_DC");
+	
+
 	//run simulation
 	for(int i = 0; i < timesteps; i++)
 	{
@@ -39,6 +44,11 @@ void Simulation::cylinderRe20(int timesteps)
 	Boundary boundary;
 	Pressure pressurestep;
 	WriteToCSV writer;
+
+	writer.deletefile("udata_RE20");
+	writer.deletefile("vdata_RE20");
+	writer.deletefile("pdata_RE20");
+	
 
 	//run simulation
 	for(int i = 0; i < timesteps; i++)
