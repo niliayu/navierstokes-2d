@@ -45,7 +45,7 @@ class Initialization
 	public:
 		/* MESH INITIALIZATION */
 	
-	Initialization(int x_size, int y_size): 
+	Initialization(int x_size, int y_size, double north, double south, double east, double west): 
 		gridx(x_size), gridy(y_size), 
 		u(gridx-1, std::vector<double>(gridy, 0)) ,
 		v(gridx, std::vector<double>(gridy-1, 0)) ,
@@ -53,8 +53,8 @@ class Initialization
 		ut(gridx-1, std::vector<double>(gridy)) ,
 		vt(gridx, std::vector<double>(gridy-1)) ,
 		coeff(gridx, std::vector<double>(gridy)),
-		u_top(1), u_bottom(0),
-		v_left(0), v_right(0),
+		u_top(north), u_bottom(south),
+		v_left(east), v_right(west),
 		dt(0.005),
 		tfinal(100),
 	

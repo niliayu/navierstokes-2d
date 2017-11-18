@@ -8,7 +8,7 @@
 void Simulation::drivenCavity(int timesteps)
 {
 	//initialize objects
-	Initialization init(18,18);
+	Initialization init(18,18, 1, 0, 0, 0);
 	Momentum velocitystep;
 	Boundary boundary;
 	Pressure pressurestep;
@@ -39,7 +39,7 @@ void Simulation::cylinderRe20(int timesteps)
 {
 	
 	//initialize objects
-	Initialization init(18,18);
+	Initialization init(18,18, 0, 0, 0, 0);
 	Momentum velocitystep;
 	Boundary boundary;
 	Pressure pressurestep;

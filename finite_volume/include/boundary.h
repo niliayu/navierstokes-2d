@@ -9,8 +9,8 @@ class Boundary
 
 		void boundary(double nval, double sval, std::vector<std::vector<double>> & u, std::vector<std::vector<double>> & v);
 
-		double getNSparabolic(int xpos, int xgrid);
-		double getEWparabolic(int ypos, int ygrid); 
+		double getNSparabolic(double xpos, double xgrid);
+		double getEWparabolic(double ypos, double ygrid); 
 	
 		double north(double nval, double cell_value);
 		double south(double sval, double cell_value);

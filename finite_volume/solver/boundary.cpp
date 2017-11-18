@@ -36,22 +36,20 @@ void Boundary::boundary(double nval, double sval, std::vector<std::vector<double
 
 	for(unsigned int y = 0; y < v[v.size()-1].size(); y++)
 	{
-		(v[v.size()-1])[y] = east(getEWparabolic((v[v.size()-1])[y], v[v.size()-1].size()), (v[v.size()-1])[y]);
-
-	std::cout << "Parab: " << getEWparabolic((v[v.size()-1])[y], v[v.size()-1].size()) << std::endl;
+		(v[v.size()-1])[y] = getEWparabolic((v[v.size()-1])[y], v[v.size()-1].size());
 	}
 
 }
 
-double Boundary::getNSparabolic(int xpos, int xgrid){ return 0.0; }
+double Boundary::getNSparabolic(double xpos, double xgrid){ return 0.0; }
 
-double Boundary::getEWparabolic(int ypos, int ygrid)
+double Boundary::getEWparabolic(double ypos, double ygrid)
 		{
 			double maxU = 0.3;
 			double gridActual = 0.41;	
 	
 			double pos = (ypos/ygrid)*gridActual;
-		
+
 			return (4*maxU*pos*(gridActual - pos))/(pow(0.41,2));	
 		}
 
