@@ -44,8 +44,8 @@ class Initialization
 	public:
 		/* MESH INITIALIZATION */
 	
-	Initialization(): 
-		gridx(18), gridy(18), 
+	Initialization(int x_size, int y_size): 
+		gridx(x_size), gridy(y_size), 
 		u(gridx-1, std::vector<double>(gridy, 0)) ,
 		v(gridx, std::vector<double>(gridy-1, 0)) ,
 		p(gridx, std::vector<double>(gridy)) ,

@@ -7,8 +7,8 @@ class Simulation
 
 	public: 
 		void drivenCavity(int timesteps);
-		void cylinderRe20();
-		void cylinderRe100();
+		void cylinderRe20(int timesteps);
+		void cylinderRe100(int timesteps);
 
 }; 
 
