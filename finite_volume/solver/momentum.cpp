@@ -61,14 +61,12 @@ void Momentum::velocity_correction(double h, double dt, std::vector<std::vector<
 		}
 	}
 	
-	for(unsigned int x = 1; x < v.size()-2; x++)
+	for(unsigned int x = 1; x < v.size()-1; x++)
 	{
 		for(unsigned int y = 1; y < v[x].size()-1; y++)
 		{
 			if(!object.checker(x, y, xignore, yignore, xedges, yedges))
 				v[x][y] = v_temp[x][y] - (dt/h)*(-p[x][y+1] + p[x][y]); 
-
-			std::cout << "x_corr, y_corr " << x << ", " << y << std::endl;
 		}
 	}
 }

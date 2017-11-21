@@ -25,10 +25,12 @@ void Pressure::pressure_calc(double beta, double height, double dt, double maxit
 					std::cout << "p1: " << p[x+1][y] << ", p2: " << p[x-1][y] <<
 						", p3: " << p[x][y+1] << ", p4: " << p[x][y-1] 
 						<< std::endl;
+
+					std::cout << "p: " << psum - vsum + relaxation << std::endl;
 					std::cout << "psum: " << psum << ", vsum: " << vsum << ", relax: " << relaxation << std::endl;
-	*/
+	
 	//				p_temp[x][y] = psum - vsum + relaxation;		
-					p[x][y] = psum - vsum + relaxation;	
+	*/				p[x][y] = psum - vsum + relaxation;	
 			}	
 		}
 		

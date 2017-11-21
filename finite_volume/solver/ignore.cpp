@@ -45,7 +45,6 @@
 		v[xpos][ypos] = bound.west(v[xpos][ypos], v[xpos-1][ypos]);	
 
 		
-
 	}else if(std::find(xignore.begin(), xignore.end(), xpos+1) == xignore.end()){
 		//call east with x+1 
 		//reflect + extend xvalon x-1	
@@ -58,6 +57,8 @@
 		//call north, y+1 is in yignore, call with y-1
 		//reflect + extend yval on y+1	
 		u[xpos][ypos] = bound.north(v[xpos][ypos], v[xpos][ypos-1]);	
+
+
 	}else if(std::find(yignore.begin(), yignore.end(), ypos+1) == yignore.end()){
 		//call south, y-1 is in yignore, call with y+1
 		//reflect + extend yval on y-1	
