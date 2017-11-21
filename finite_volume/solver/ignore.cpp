@@ -8,18 +8,18 @@
 
 			double position = sqrt(pow((xpos - xcenter), 2) 
 					+ pow((ypos - ycenter), 2));
-		
+	
 			if(position < radius)
 			{
 				xignore.push_back(xpos); 
 				yignore.push_back(ypos);	
-				//std::cout << "Inside: x: " << xpos << ", y: " << ypos << std::endl;	
-			}else if(position == radius)
+				std::cout << "Inside: x: " << xpos << ", y: " << ypos << std::endl;	
+			}else if(floor(position) == radius)
 			{
 				xedges.push_back(xpos);
 				yedges.push_back(ypos);
-				//std::cout << "Edge: x: " << xpos << ", y: " << ypos << std::endl;	
-		}	
+				std::cout << "Edge: x: " << xpos << ", y: " << ypos << std::endl;	
+			}	
 
 		}
 
@@ -38,24 +38,27 @@
 {
 	Boundary bound;
 
-	if (std::find(xignore.begin(), xignore.end(), xpos+1) != xignore.end())
+	if (std::find(xignore.begin(), xignore.end(), xpos-1) == xignore.end())
 	{ 
 		//call west with x-1
 		//reflect + extend xval on x+1	
 		v[xpos][ypos] = bound.west(v[xpos][ypos], v[xpos-1][ypos]);	
-	}else if(std::find(xignore.begin(), xignore.end(), xpos-1) != xignore.end()){
+
+		
+
+	}else if(std::find(xignore.begin(), xignore.end(), xpos+1) == xignore.end()){
 		//call east with x+1 
 		//reflect + extend xvalon x-1	
 		v[xpos][ypos] = bound.east(v[xpos][ypos], v[xpos+1][ypos]);	
 	}
 
 
-	if(std::find(yignore.begin(), yignore.end(), ypos+1) != yignore.end())
+	if(std::find(yignore.begin(), yignore.end(), ypos-1) == yignore.end())
 	{
 		//call north, y+1 is in yignore, call with y-1
 		//reflect + extend yval on y+1	
 		u[xpos][ypos] = bound.north(v[xpos][ypos], v[xpos][ypos-1]);	
-	}else if(std::find(yignore.begin(), yignore.end(), ypos-1) != yignore.end()){
+	}else if(std::find(yignore.begin(), yignore.end(), ypos+1) == yignore.end()){
 		//call south, y-1 is in yignore, call with y+1
 		//reflect + extend yval on y-1	
 		u[xpos][ypos] = bound.south(v[xpos][ypos], v[xpos][ypos+1]);	

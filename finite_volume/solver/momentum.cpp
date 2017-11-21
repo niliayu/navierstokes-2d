@@ -13,7 +13,7 @@ void Momentum::velocity_intermediate(double h, double mu, double dt, std::vector
 	for(unsigned int x = 1; x < u.size()-1; x++)
 	{
 		for(unsigned int y = 1; y < u[x].size()-2; y++)
-			{
+		{
 			if(!object.checker(x, y, xignore, yignore, xedges, yedges)){
 
 				return_u[x][y] = u[x][y] + dt*((-0.25/h)*(pow((u[x-1][y]+u[x][y]),2.0) 
@@ -26,13 +26,13 @@ void Momentum::velocity_intermediate(double h, double mu, double dt, std::vector
 				object.obj_boundary(x, y, xignore, yignore, xedges, yedges, u, v);  
 			}
 		}	
-	}	
+}	
 
 	//V projection matrix
 	for(unsigned int x = 1; x < v.size()-2; x++)
 	{
 		for(unsigned int y = 1; y < v[x].size()-1; y++)
-			{ 
+		{ 
 			if(!object.checker(x, y, xignore, yignore, xedges, yedges)){
 				return_v[x][y] = v[x][y] + dt*(-(0.25/h)*((u[x][y-1]+u[x][y])
 						*(v[x-1][y]+v[x][y]) - (u[x+1][y-1]+u[x+1][y])
@@ -40,10 +40,10 @@ void Momentum::velocity_intermediate(double h, double mu, double dt, std::vector
 						       	- pow((v[x][y+1]+v[x][y]),2.0))) 
 					+ (mu/pow(h,2.0))*(v[x-1][y]+v[x+1][y]+v[x][y-1]+v[x][y+1]
 						-(4*v[x][y]))); 
+
 			}else{
 				object.obj_boundary(x, y, xignore, yignore, xedges, yedges, u, v);  
 			}
-	
 		}
 	}
 }	
@@ -61,12 +61,14 @@ void Momentum::velocity_correction(double h, double dt, std::vector<std::vector<
 		}
 	}
 	
-	for(unsigned int x = 1; x < v.size()-1; x++)
+	for(unsigned int x = 1; x < v.size()-2; x++)
 	{
 		for(unsigned int y = 1; y < v[x].size()-1; y++)
 		{
 			if(!object.checker(x, y, xignore, yignore, xedges, yedges))
 				v[x][y] = v_temp[x][y] - (dt/h)*(-p[x][y+1] + p[x][y]); 
+
+			std::cout << "x_corr, y_corr " << x << ", " << y << std::endl;
 		}
 	}
 }
