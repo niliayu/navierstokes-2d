@@ -33,13 +33,19 @@ void Simulation::drivenCavity(int timesteps)
 
 		boundary.boundary(init.getUTop(), init.getUBottom(), init.getVLeft(), init.getVRight(), init.getU(), init.getV());	
 
-		std::cout << "boundary" << std::endl;
+		std::cout << "boundary V" << std::endl;
 		printer.print(init.getV());
+		std::cout << "boundary U" << std::endl;
+		printer.print(init.getU());
 
-	velocitystep.velocity_intermediate(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt(), init.getXignore(), init.getYignore(), init.getXedges(), init.getYedges()); 
+
+		velocitystep.velocity_intermediate(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt(), init.getXignore(), init.getYignore(), init.getXedges(), init.getYedges()); 
 
 		std::cout << "projection (Vt)" << std::endl;
 		printer.print(init.getVt());
+		std::cout << "projection (Ut)" << std::endl;
+		printer.print(init.getUt());
+
 
 	pressurestep.pressure_calc(init.getBeta(), init.getH(), init.getDt(), init.getMaxIt(), init.getP(), init.getUt(), init.getVt(), init.getCoeff(), init.getXignore(), init.getYignore(), init.getXedges(), init.getYedges());
 	
