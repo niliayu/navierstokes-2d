@@ -1,16 +1,15 @@
 %% Process CSV files of U, V, and P matrices
 
-% if using a 16x16 grid: 17 is the magic number
-magic = 17;
-%magic = 35;
+%magic = 17;
+magic = 49;
 
-ufile = '../udata_DC.csv';
-vfile = '../vdata_DC.csv';
-pfile = '../pdata_DC.csv';
+% ufile = '../udata_DC.csv';
+% vfile = '../vdata_DC.csv';
+% pfile = '../pdata_DC.csv';
 
-% ufile = '../udata_RE20.csv';
-% vfile = '../vdata_RE20.csv';
-% pfile = '../pdata_RE20.csv';
+ufile = '../udata_RE20.csv';
+vfile = '../vdata_RE20.csv';
+pfile = '../pdata_RE20.csv';
 
 %% U matrix
 full = csvread(ufile);
@@ -67,22 +66,26 @@ end
 
 %% Plotting
 
-matsize = size(P);
+matsize = size(U);
 T = matsize(3);
 
 for t=1:T
     
-    u_plot = 0.5*(U(1:magic-3, 2:magic-2, t)+U(1:magic-3, 1:magic-3, t));
-    v_plot = 0.5*(V(2:magic-2, 1:magic-3, t)+V(1:magic-3, 1:magic-3, t));
+    %u_plot = 0.5*(U(1:magic-3, 2:magic-2, t)+U(1:magic-3, 1:magic-3, t));
+    %v_plot = 0.5*(V(2:magic-2, 1:magic-3, t)+V(1:magic-3, 1:magic-3, t));
 
-    contour_plot = (U(1:magic-3, 2:magic-2, t)-U(1:magic-3, 1:magic-3, t) ...
-        -V(2:magic-2, 1:magic-3, t)+V(1:magic-3, 1:magic-3, t))/(2*(magic-3));
+    %contour_plot = (U(1:magic-3, 2:magic-2, t)-U(1:magic-3, 1:magic-3, t) ...
+        %-V(2:magic-2, 1:magic-3, t)+V(1:magic-3, 1:magic-3, t))/(2*(magic-3));
 
-    subplot(3,1,1)
-    quiver(u_plot',v_plot', 'r')
-    subplot(3,1,2)
-    contour(contour_plot')
-    subplot(3,1,3)
+    %subplot(3,1,1)
+    %quiver(u_plot',v_plot', 'r')
+    %subplot(3,1,2)
+    %contour(contour_plot')
+    %subplot(3,1,3)
+    
+    subplot(2,1,1)
+    quiver(U(:,:,t)', V(:,:,t)')
+    subplot(2,1,2)
     image(sqrt(P(:,:,t).^2), 'CDataMapping', 'scaled')
     pause(0.3);
 end

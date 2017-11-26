@@ -59,7 +59,7 @@ class Initialization
 		tfinal(100),
 	
 		maxit(100), //pressure solver max iterations
-		mu(0.001), // kinematic viscosity
+		mu(0.1), // kinematic viscosity
 		beta(1.2), // SOR extrapolation factor
 		h(1.0/(gridx-2)) // grid height
 		{

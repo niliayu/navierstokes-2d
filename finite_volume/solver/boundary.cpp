@@ -22,19 +22,15 @@ void Boundary::boundary(double nval, double sval, std::vector<std::vector<double
 {
 	for(unsigned int x = 0; x < u.size(); x++)
 	{
-		(u[x])[0] = north(nval, (u[x])[0]);
-		(u[x])[u[x].size()-2] = south(sval, (u[x])[u[x].size()-2]);
+		(u[x])[0] = north(nval, (u[x])[1]);
+		(u[x])[u[x].size()] = south(sval, (u[x])[u[x].size()-1]);
 	}
 
-/*	for(unsigned int y = 0; y < v[0].size(); y++)
+	for(unsigned int y = 0; y < v.size(); y++)
 	{
-		(v[1])[y] = west(wval, (v[1])[y]);
-	}
-*/
-
-	for(unsigned int y = 0; y < v[v.size()-1].size(); y++)
-	{
-		(v[v.size()-2])[y] = getEWparabolic(y, v[v.size()-2].size());
+		(v[v[y].size()-1])[y] = getEWparabolic(y, v[v.size()].size());
+		(v[v[y].size()])[y] = (v[v[y].size()-1])[y]; 
+		(v[0])[y] = (v[1])[y]; //outlet
 	}
 
 }

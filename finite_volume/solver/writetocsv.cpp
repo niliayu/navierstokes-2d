@@ -7,7 +7,7 @@ void WriteToCSV::write( const std::string& filename, std::vector<std::vector<dou
 
 	std::ofstream openfile;
 	openfile.open(filename + ".csv", std::ios_base::app);
-	
+
 	for(unsigned int x = 0; x < mat.size(); x++)
 	{
 		for(unsigned int y = 0; y < mat[x].size(); y++)

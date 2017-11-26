@@ -5,9 +5,12 @@ int main()
 {
 	
 	Simulation sim;
-	sim.drivenCavity(50);
-//	sim.cylinderRe20(10);
+
+//	sim.drivenCavity(50);
+	sim.cylinderRe20(12);
 //	sim.cylinderRe100(10);	
+
+	return 0;
 }
 
 
