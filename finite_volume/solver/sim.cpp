@@ -73,12 +73,13 @@ void Simulation::cylinderRe20(int timesteps)
 	}	
 
 
+	double max = 0.3;
 	//run simulation
 	for(int i = 0; i < timesteps; i++)
 	{
-		std::cout << "iteration#" << i << std::endl;
+//		std::cout << "iteration#" << i << std::endl;
 		
-		boundary.boundary(init.getUTop(), init.getUBottom(), init.getU(), init.getV());
+		boundary.boundary(init.getUTop(), init.getUBottom(), init.getU(), init.getV(), max);
 		
 //		std::cout << "boundary" << std::endl;
 //		printer.print(init.getV());
@@ -107,7 +108,63 @@ void Simulation::cylinderRe20(int timesteps)
 void Simulation::cylinderRe100(int timesteps)
 {
 
-	return; 
+	//initialize objects
+	Initialization init(24,24, 0, 0, 0, 0);
+	Momentum velocitystep;
+	Boundary boundary;
+	Pressure pressurestep;
+	Ignore object;
+	WriteToCSV writer;
+
+	PrintMatrix printer;
+
+	//delete previous versions of files
+	writer.deletefile("udata_RE100");
+	writer.deletefile("vdata_RE100");
+	writer.deletefile("pdata_RE100");
+
+	double radius = 3.0;
+	double xcenter = 12.0;
+	double ycenter = 12.0;
+	//populate ignore vector
+
+	double max = 100;
+
+	for(unsigned int x = 0; x < (init.getU()).size(); x++)
+	{
+		for(unsigned int y = 0; y < (init.getV())[x].size(); y++)
+		{
+			object.circle(radius, xcenter, ycenter, x, y, init.getXignore(), init.getYignore(), init.getXedges(), init.getYedges());
+		}
+	}	
+
+	//run simulation
+	for(int i = 0; i < timesteps; i++)
+	{
+//		std::cout << "iteration#" << i << std::endl;
+		
+		boundary.boundary(init.getUTop(), init.getUBottom(), init.getU(), init.getV(), max);
+		
+//		std::cout << "boundary" << std::endl;
+//		printer.print(init.getV());
+
+		velocitystep.velocity_intermediate(init.getH(), init.getMu(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt(), init.getXignore(), init.getYignore(), init.getXedges(), init.getYedges()); 
+
+//		std::cout << "projection" << std::endl;
+//		printer.print(init.getV());
+
+		pressurestep.pressure_calc(init.getBeta(), init.getH(), init.getDt(), init.getMaxIt(), init.getP(), init.getUt(), init.getVt(), init.getCoeff(), init.getXignore(), init.getYignore(), init.getXedges(), init.getYedges());
+
+//		std::cout << "pressure" << std::endl;
+//		printer.print(init.getV());
+		
+		velocitystep.velocity_correction(init.getH(), init.getDt(), init.getU(), init.getV(), init.getUt(), init.getVt(), init.getP(), init.getXignore(), init.getYignore(), init.getXedges(), init.getYedges());
+	
+		//export data
+		writer.write("udata_RE100", init.getU());
+		writer.write("vdata_RE100", init.getV());
+		writer.write("pdata_RE100", init.getP());
+	}
 
 }
 

@@ -36,36 +36,38 @@
 {
 	Boundary bound;
 
-//	for(int i = 0; i < xignore.length
+//	for(int i = 0; i < xignore.size(); i++)
 
-	if((std::find(yedges.begin(), yedges.end(), ypos) != yedges.end()) && (std::find(yedges.begin(), yedges.end(), ypos) != yedges.end()))
+	if((std::find(xedges.begin(), xedges.end(), xpos) != xedges.end()) && (std::find(yedges.begin(), yedges.end(), ypos) != yedges.end()))
 	{	
-		std::cout << "x " << xpos << ", y " << ypos << std::endl;
-
 		if (std::find(yignore.begin(), yignore.end(), ypos-1) == yignore.end())
 		{ 
 			//call west with x-1
 			//reflect + extend xval on x+1	
-			v[xpos][ypos] = bound.west(v[xpos][ypos], v[xpos-1][ypos]);	
+//			v[xpos][ypos] = bound.reflect(v[xpos][ypos], v[xpos-1][ypos]);	
+			v[xpos][ypos] = bound.reflect(0, v[xpos-1][ypos]);	
 		}
 		
 		if(std::find(yignore.begin(), yignore.end(), ypos+1) == yignore.end()){
 			//call east with x+1 
 			//reflect + extend xval on x-1	
-			v[xpos][ypos] = bound.east(v[xpos][ypos], v[xpos+1][ypos]);	
+			//v[xpos][ypos] = bound.reflect(v[xpos][ypos], v[xpos+1][ypos]);	
+			v[xpos][ypos] = bound.reflect(0, v[xpos+1][ypos]);	
 		}
 	
 		if(std::find(xignore.begin(), xignore.end(), xpos-1) == xignore.end())
 		{
 			//call north, y+1 is in yignore, call with y-1
 			//reflect + extend yval on y+1	
-			u[xpos][ypos] = bound.north(u[xpos][ypos], u[xpos][ypos-1]);	
+			//u[xpos][ypos] = bound.reflect(u[xpos][ypos], u[xpos][ypos-1]);	
+			u[xpos][ypos] = bound.reflect(0, u[xpos][ypos-1]);	
 		}
 		
 		if(std::find(xignore.begin(), xignore.end(), xpos+1) == xignore.end()){
 			//call south, y-1 is in yignore, call with y+1
 			//reflect + extend yval on y-1	
-			u[xpos][ypos] = bound.south(u[xpos][ypos], u[xpos][ypos+1]);	
+			//u[xpos][ypos] = bound.reflect(u[xpos][ypos], u[xpos][ypos+1]);	
+			u[xpos][ypos] = bound.reflect(0, u[xpos][ypos+1]);	
 		}	
 	}
 }

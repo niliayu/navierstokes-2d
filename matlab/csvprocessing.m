@@ -6,9 +6,13 @@ magic = 23;
 % vfile = '../vdata_DC.csv';
 % pfile = '../pdata_DC.csv';
 % % 
-ufile = '../udata_RE20.csv';
-vfile = '../vdata_RE20.csv';
-pfile = '../pdata_RE20.csv';
+% ufile = '../udata_RE20.csv';
+% vfile = '../vdata_RE20.csv';
+% pfile = '../pdata_RE20.csv';
+
+ufile = '../udata_RE100.csv';
+vfile = '../vdata_RE100.csv';
+pfile = '../pdata_RE100.csv';
 
 %% U matrix
 full = csvread(ufile);
@@ -86,6 +90,6 @@ for t=1:T
     quiver(U(:,:,t)', V(:,:,t)')
     subplot(2,1,2)
     image(sqrt(P(:,:,t).^2), 'CDataMapping', 'scaled')
-    pause(0.3);
+    pause(0.03);
 end
 
