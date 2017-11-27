@@ -1,12 +1,11 @@
 %% Process CSV files of U, V, and P matrices
 
-%magic = 17;
-magic = 49;
+magic = 23;
 
 % ufile = '../udata_DC.csv';
 % vfile = '../vdata_DC.csv';
 % pfile = '../pdata_DC.csv';
-
+% % 
 ufile = '../udata_RE20.csv';
 vfile = '../vdata_RE20.csv';
 pfile = '../pdata_RE20.csv';

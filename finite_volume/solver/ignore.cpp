@@ -51,7 +51,7 @@
 		
 		if(std::find(yignore.begin(), yignore.end(), ypos+1) == yignore.end()){
 			//call east with x+1 
-			//reflect + extend xvalon x-1	
+			//reflect + extend xval on x-1	
 			v[xpos][ypos] = bound.east(v[xpos][ypos], v[xpos+1][ypos]);	
 		}
 	
